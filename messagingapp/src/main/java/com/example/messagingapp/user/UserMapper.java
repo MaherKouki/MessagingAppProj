@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserMapper {
 
-    /*public User fromTokenAttributes(Map<String, Object> attributes) {
+    public User fromTokenAttributes(Map<String, Object> attributes) {
         User user = new User();
 
         if (attributes.containsKey("sub")) {
@@ -19,13 +19,13 @@ public class UserMapper {
         }
 
         if (attributes.containsKey("given_name")) {
-            user.setFirstName(attributes.get("given_name").toString());
+            user.setFirstname(attributes.get("given_name").toString());
         } else if (attributes.containsKey("nickname")) {
-            user.setFirstName(attributes.get("nickname").toString());
+            user.setFirstname(attributes.get("nickname").toString());
         }
 
         if (attributes.containsKey("family_name")) {
-            user.setLastName(attributes.get("family_name").toString());
+            user.setLastname(attributes.get("family_name").toString());
         }
 
         if (attributes.containsKey("email")) {
@@ -34,7 +34,7 @@ public class UserMapper {
         user.setLastSeen(LocalDateTime.now());
         return user;
     }
-
+/*
     public UserResponse toUserResponse(User user) {
         return UserResponse.builder()
                 .id(user.getId())

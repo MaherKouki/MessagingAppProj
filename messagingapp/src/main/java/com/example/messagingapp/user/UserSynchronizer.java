@@ -21,7 +21,7 @@ import java.util.Optional;
 public class UserSynchronizer {
 
 
-    /*private final UserRepository userRepository;
+    private final UserRepository userRepository;
     private final UserMapper userMapper;
 
     public void synchronizeWithIdp(Jwt token) {
@@ -44,7 +44,7 @@ public class UserSynchronizer {
         }
         return Optional.empty();
 
-    }*/
+    }
 
 
 
