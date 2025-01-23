@@ -1,5 +1,6 @@
 package com.example.messagingapp.message;
 
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class MessageController {
     @ResponseStatus(HttpStatus.CREATED)
     public void uploadMediaMessage(
             @RequestParam("chat-id") String chatId,
-            //todo add @Parameter from swagger
+            @Parameter //to add media for swagger
             @RequestParam("file") MultipartFile file,
             Authentication authentication
     ){
