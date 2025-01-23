@@ -4,6 +4,7 @@ package com.example.messagingapp.message;
 import com.example.messagingapp.chat.Chat;
 import com.example.messagingapp.chat.ChatRepository;
 import com.example.messagingapp.file.FileService;
+import com.example.messagingapp.notification.NotificationService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,7 @@ public class MessageService {
     private final ChatRepository chatRepository;
     private final MessageMapper mapper;
     private final FileService fileService;
+    private final NotificationService notificationService;
 
     public void saveMessage(MessageRequest messageRequest) {
 
