@@ -19,13 +19,13 @@ public class UserMapper {
         }
 
         if (attributes.containsKey("given_name")) {
-            user.setFirstname(attributes.get("given_name").toString());
+            user.setFirstName(attributes.get("given_name").toString());
         } else if (attributes.containsKey("nickname")) {
-            user.setFirstname(attributes.get("nickname").toString());
+            user.setFirstName(attributes.get("nickname").toString());
         }
 
         if (attributes.containsKey("family_name")) {
-            user.setLastname(attributes.get("family_name").toString());
+            user.setLastName(attributes.get("family_name").toString());
         }
 
         if (attributes.containsKey("email")) {
@@ -34,7 +34,7 @@ public class UserMapper {
         user.setLastSeen(LocalDateTime.now());
         return user;
     }
-/*
+
     public UserResponse toUserResponse(User user) {
         return UserResponse.builder()
                 .id(user.getId())
@@ -44,7 +44,7 @@ public class UserMapper {
                 .lastSeen(user.getLastSeen())
                 .isOnline(user.isUserOnline())
                 .build();
-    }*/
+    }
 
 
 

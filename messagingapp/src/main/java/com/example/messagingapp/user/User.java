@@ -34,9 +34,9 @@ public class User extends BaseAuditingEntity {
     @Id
     private String id;
 
-    private String firstname;
+    private String firstName;
 
-    private String lastname;
+    private String lastName;
 
     private String email;
 
