@@ -4,7 +4,10 @@ package com.example.messagingapp.message;
 import com.example.messagingapp.chat.Chat;
 import com.example.messagingapp.chat.ChatRepository;
 import com.example.messagingapp.file.FileService;
+import com.example.messagingapp.file.FileUtils;
+import com.example.messagingapp.notification.Notification;
 import com.example.messagingapp.notification.NotificationService;
+import com.example.messagingapp.notification.NotificationType;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -39,7 +42,18 @@ public class MessageService {
 
         messageRepository.save(message);
 
-        //todo notification
+        Notification notification = Notification.builder()
+                .chatId(chat.getId())
+                .messageType(message.getType())
+                .senderId(message.getSenderId())
+                .receiverId(message.getReceiverId())
+                .content(message.getContent())
+                .type(NotificationType.MESSAGE)
+                .chatName(chat.getChatName(message.getSenderId()))
+                .build();
+        notificationService.sendNotification(message.getReceiverId(),notification);
+
+
     }
 
     public List<MessageResponse> findChatMessages(String chatId){
@@ -54,11 +68,19 @@ public class MessageService {
         Chat chat = chatRepository.findById(chatId)
                 .orElseThrow(() -> new EntityNotFoundException("chat not found"));
 
-        //final String recipientId = getRecipientId(chat, authentication);
+        final String recipientId = getRecipientId(chat, authentication);
 
         messageRepository.setMessagesToSeenByChatId(chatId, MessageState.SEEN);
 
-        //todo notification
+        Notification notification = Notification.builder()
+                .chatId(chat.getId())
+                .senderId(getSenderId(chat,authentication))
+                .receiverId(recipientId)
+                .type(NotificationType.SEEN)
+                .build();
+        notificationService.sendNotification(recipientId,notification);
+
+
     }
 
 
@@ -79,10 +101,18 @@ public class MessageService {
         message.setType(MessageType.IMAGE);
         message.setState(MessageState.SENT);
         message.setMediaFilePath(filePath);
-
         messageRepository.save(message);
 
-        //todo notification
+        Notification notification = Notification.builder()
+                .chatId(chat.getId())
+                .messageType(MessageType.IMAGE)
+                .senderId(senderId)
+                .receiverId(recipientId)
+                .type(NotificationType.IMAGE)
+                .media(FileUtils.readFileFromLocation(filePath))
+                .build();
+        notificationService.sendNotification(recipientId,notification);
+
 
     }
 
