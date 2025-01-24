@@ -39,12 +39,20 @@ export class KeycloakService {
   }
 
   get isTokenValid() : boolean{
-    return !this.keycloak?.isTokenExpired();
+    return !this.keycloak.isTokenExpired();
   }
 
+  get fullName() : string{
+    return this.keycloak?.tokenParsed?.['name'] as string;
+  }
 
+  logout(){
+    return this.keycloak.logout({redirectUri: 'http://localhost:4200'});
+  }
 
-
+  accountManagement(){
+    return this.keycloak.accountManagement();
+  }
 
 
 
