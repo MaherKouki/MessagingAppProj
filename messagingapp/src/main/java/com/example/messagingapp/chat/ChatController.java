@@ -2,6 +2,7 @@ package com.example.messagingapp.chat;
 
 
 import com.example.messagingapp.common.StringResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -12,6 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
+@Tag(name = "Chat Controller")
+
 public class ChatController {
 
     private final ChatService chatService;
