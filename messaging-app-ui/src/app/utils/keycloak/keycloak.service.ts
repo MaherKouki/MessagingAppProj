@@ -30,6 +30,22 @@ export class KeycloakService {
     })
   }
 
+  async login(){
+    await this.keycloak.login();
+  }
+
+  get userInfo() : string{
+    return this.keycloak?.tokenParsed?.sub as string;
+  }
+
+  get isTokenValid() : boolean{
+    return !this.keycloak?.isTokenExpired();
+  }
+
+
+
+
+
 
 
 
