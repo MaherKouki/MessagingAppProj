@@ -45,7 +45,4 @@ public class UserSynchronizer {
         return Optional.empty();
 
     }
-
-
-
 }

@@ -2,22 +2,39 @@
   <div class="background-green"></div>
 
   <div class="main-container d-flex">
-    <div class="d-flex flex-column justify-content-between align-items-center p-3 gray-bg" >
+    <!-- Sidebar -->
+    <div class="d-flex flex-column justify-content-between align-items-center p-3 gray-bg">
+      <!-- Message Icon -->
       <div>
-        <i class="fa-solid fa-message cursor-pointer"></i>
+        <i class="fa-solid fa-message cursor-pointer" aria-label="Messages"></i>
       </div>
+      <!-- User and Logout Icons -->
       <div class="d-flex flex-column align-items-center gap-2">
-        <i class="fa-solid fa-user cursor-pointer"></i>
-        <i class="fa-solid fa-door-open cursor-pointer"></i>
+        <!-- User Profile -->
+        <button
+          class="icon-btn"
+          aria-label="User Profile"
+          (click)="userProfile()"
+        >
+          <i class="fa-solid fa-user cursor-pointer"></i>
+        </button>
+        <!-- Logout -->
+        <button
+          class="icon-btn"
+          aria-label="Logout"
+          (click)="logout()"
+        >
+          <i class="fa-solid fa-door-open cursor-pointer"></i>
+        </button>
       </div>
     </div>
+
+    <!-- Main Container -->
     <div class="d-flex w-100">
+      <!-- Chat List -->
       <div class="col-3 overflow-x-scroll">
-        <app-chat-list
-          [chats]="chats"
-        ></app-chat-list>
+        <app-chat-list [chats]="chats"></app-chat-list>
       </div>
     </div>
   </div>
-
 </div>
