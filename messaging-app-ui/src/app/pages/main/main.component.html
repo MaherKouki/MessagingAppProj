@@ -33,8 +33,18 @@
     <div class="d-flex w-100">
       <!-- Chat List -->
       <div class="col-3 overflow-x-scroll">
-        <app-chat-list [chats]="chats"></app-chat-list>
+        <app-chat-list [chats]="chats"
+        (chatSelected)="chatSelected($event)"
+        ></app-chat-list>
       </div>
+
+      <div class="col-9">
+        <div class="d-flex flex-column justify-content-between h-100">
+
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>
