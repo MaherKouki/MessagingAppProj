@@ -22,7 +22,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([keycloakHttpInterceptor])
     ),
-
     provideAppInitializer(() => {
       const initFn = ((key: KeycloakService) => {
         return () => key.init()
