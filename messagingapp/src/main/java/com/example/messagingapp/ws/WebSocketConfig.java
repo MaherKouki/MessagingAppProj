@@ -40,6 +40,16 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                 .withSockJS();
     }
 
+
+
+    /*@Override // Defines the WebSocket endpoint and enables SockJS as a fallback.
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry
+                .addEndpoint("/ws")
+                .setAllowedOrigins("http://localhost:4200")
+                .withSockJS();
+    }*/
+
     @Override // Adds a custom argument resolver for injecting authenticated user details.
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(new AuthenticationPrincipalArgumentResolver());
